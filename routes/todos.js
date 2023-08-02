@@ -1,10 +1,11 @@
 var express = require('express');
 var router = express.Router();
-var todoController = require('../controllers/todos')
+var todosController = require('../controllers/todos')
 
 
  // All actual paths start with "/todos"
- router.get('/', todoController.index)
+ router.get('/', todosController.index)
+ router.get('/:id', todosController.show);
 
 
 module.exports = router;
