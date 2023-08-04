@@ -13,13 +13,25 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+//custom middleware example
+//req and res are express objects
+//res.locals -> locals is an object inside the res object.
+//with res.locals.time, we are adding a time property to the locals object inside res.
+app.use(function(req,res,next){
+  res.locals.time = new Date().toLocaleTimeString();
+  next()
+});
+
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//mounting the router for the root route. 
 app.use('/', indexRouter);
+//mounting the router for the todos route.
 app.use('/todos', todosRouter);
 
 // catch 404 and forward to error handler

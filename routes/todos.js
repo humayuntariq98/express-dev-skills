@@ -7,9 +7,11 @@ var todosController = require('../controllers/todos')
  //path 1: for main page of todos which 
  router.get('/', todosController.index)
 
+//Path 3: new todo route
+router.get('/new', todosController.new)
+
  //path 2: for showing individual todos once they are clicked
  router.get('/:id', todosController.show);
-
 
 module.exports = router;
 
