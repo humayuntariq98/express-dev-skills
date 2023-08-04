@@ -11,7 +11,8 @@ const todos = [
     getAll,
     getOne,
     create,
-    deleteTodoFromData
+    deleteTodoFromData,
+    update
   };
   
   function getAll() {
@@ -53,4 +54,31 @@ const todos = [
     id = parseInt(id)
     const idx = todos.findIndex((t)=> t.id === id)
     todos.splice(idx,1)
+  }
+
+  //data would be the req.body.todo property which we get through the form submitted by the user
+  function update(id,data){
+    //we need to find the todo that we need to update
+    //METHOD 1: DIRECTLY UPDATING THE TODOS OBJECT. NOT FEASIBLE FOR BIG OBJECTS
+
+    // id = parseInt(id)
+    // const index = todos.findIndex((t)=> t.id === id)
+    // todos[index].todo = data.todo
+
+    //METHOD 2: MERGING OUR DATA OBJECT (REQ.BODY OBJECT) INTO THE TODOS OBJECT
+    //Object.assign(target, source) ->target is the object that will get changed or merged into, source will be merged.
+    //it will not change the object but only update its properties 
+    //->can add multiple source objects. Object.assign(target, source1,source2,source3) source 3 will get merged first then second then first.
+
+    // id = Number(id);
+    // const todoMatched = todos.find ((todo)=> todo.id === id);
+    // //now we want to make a copy of it and override the copie's properties through object assign method. data refers to req.body object
+    // Object.assign(todoMatched, data);
+
+    // method 3 : similar to option 2 but using findIndex instead of find
+    id = Number(id)
+    let index = todos.findIndex((t)=> t.id === id)
+    const todoMatched = todos[index];
+    let updatedMatchedTodo = Object.assign({...todoMatched, ...data});
+    todos.splice(index,1,updatedMatchedTodo)
   }

@@ -1,0 +1,14 @@
+<%- include('../partials/header') %>
+
+<form action="/todos/<%= todo.id %>?_method=PUT" method="POST">
+<!-- the name = todo will become a property on req.body(property will be todo)  -->
+<!-- name propert of input represents the property in todos array in model. -->
+    <input type="text" name="todo" value="<%= todo.todo %>"> <br>
+    <label>
+    <input type="checkbox" name="done" <%= todo.done ? 'checked' : '' %>>
+    Completed?
+    </label><br>
+    <button type="submit">Update To-Do</button>
+</form>
+
+<%- include('../partials/footer') %>

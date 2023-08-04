@@ -3,6 +3,7 @@
         <ul>
           <% todos.forEach(function(t) { %>
             <li>
+              <!-- in forms, action attribute specifies the URL where the form data will be sent upon submission corresponds to a route on the server that handles the incoming request. -->
                 <form 
                 action="/todos/<%-t.id%>?_method=DELETE" 
                 method="POST"
@@ -10,6 +11,7 @@
                 >
                 <button type ="submit">X</button>          
               </form>
+              <!-- Anchor href: Specifies the URL that the browser should navigate to when the anchor tag is clicked -->
                 <a href="/todos/<%= t.id %>"><%= t.todo %></a>
                 - 
               <%= t.done ? 'done' : 'not done' %>
@@ -18,3 +20,7 @@
         </ul> 
         <a href="/todos/new">Add a new To-Do</a>
  <%- include('../partials/footer') %>
+
+ <!-- difference in href of anchor and action of form
+  The key difference is that the form's action triggers a request with data submission, whereas the anchor's href triggers a navigation request without any data submission.
+-->

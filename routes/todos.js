@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var todosController = require('../controllers/todos')
+var todosController = require('../controllers/todos');
+const todos = require('../controllers/todos');
 
 
  // All actual paths start with "/todos"
@@ -18,6 +19,12 @@ router.get('/new', todosController.new);
 
  //path 5: deleting a todo. since method has been changed to delete by method override, use router.delete
  router.delete('/:id', todosController.delete)
+
+ //path 6: editing a single todo
+ router.get('/:id/edit', todosController.edit)
+
+ //path 7: updating a todo
+ router.put('/:id', todosController.update)
 
 
 module.exports = router;
