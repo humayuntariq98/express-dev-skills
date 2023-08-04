@@ -1,19 +1,5 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> <%=todo.todo %></title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
-<body>
-    <h3> <a href="/">Home</a></h3>
+<%- include('../partials/header') %>
     <h1>Todo Show</h1>
     <p>Todo: <%= todo.todo %> </p>
     <p>Is it done? <%= todo.done ? 'done' : 'not done' %></p>
-    <div>
-        <a href="/todos">Back to Todos</a>
-    </div>
-</body>
-</html>
+<%- include('../partials/footer') %>
