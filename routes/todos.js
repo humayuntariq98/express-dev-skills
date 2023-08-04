@@ -13,6 +13,13 @@ router.get('/new', todosController.new)
  //path 2: for showing individual todos once they are clicked
  router.get('/:id', todosController.show);
 
+ //path 4: for creating the todo added through new functionality(path in step 3)
+ router.post('/', todosController.create)
+
+ //path 5: deleting a todo
+ //POST req
+
+
 module.exports = router;
 
 //editing a particular resource

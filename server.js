@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var methodOverride = require('method-override')
 
 var indexRouter = require('./routes/index');
 var todosRouter = require('./routes/todos');
@@ -29,6 +30,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//query parameters (req.query) are ways of sending additional information to the server using the URL while not impacting routing.
+//query parameters are seperated using & sign.
+//todos/?sort=name   (query parameter starts after the question mark. has a propety of sort which is assigned to name)
+app.use(methodOverride("_method"));
 //mounting the router for the root route. 
 app.use('/', indexRouter);
 //mounting the router for the todos route.

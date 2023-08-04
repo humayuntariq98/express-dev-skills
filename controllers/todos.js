@@ -5,7 +5,8 @@ const Todo = require('../models/todo')
 module.exports = {
     index,
     show,
-    new: newTodo
+    new: newTodo,
+    create
   };
   
 
@@ -29,3 +30,11 @@ function index(req, res) {
       title: "New To-Do"
     })
   }
+
+  function create(req,res){
+    console.log(req.body) //req.body is a function with todo property. the property is named todo because in our form, our input button had a name of todo.
+    Todo.create(req.body)
+    res.redirect('/todos') //res.redirect tells the browser to make a new get request. We want the user to see the page of all todos after submiting form hence '/todos'
+  }
+
+  

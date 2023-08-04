@@ -1,7 +1,8 @@
 <%- include('../partials/header') %>
 
 <form action="/todos" method="POST">
-    <input type="text" name="todo">
+<!-- this todo will become a property on req.body -->
+    <input type="text" name="todo"> 
     <button type="submit">Save To-Do</button>
 </form>
 
