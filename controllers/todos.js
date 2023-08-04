@@ -6,7 +6,8 @@ module.exports = {
     index,
     show,
     new: newTodo,
-    create
+    create,
+    delete: deleteTodo
   };
   
 
@@ -14,7 +15,7 @@ function index(req, res) {
     res.render('todos/index', {
       todos: Todo.getAll(),
       heading: "List of All Todos",
-      title: 'All To-Dos'
+      title: 'All To-Dos',
     });
   }
 
@@ -35,6 +36,11 @@ function index(req, res) {
     console.log(req.body) //req.body is a function with todo property. the property is named todo because in our form, our input button had a name of todo.
     Todo.create(req.body)
     res.redirect('/todos') //res.redirect tells the browser to make a new get request. We want the user to see the page of all todos after submiting form hence '/todos'
+  }
+
+  function deleteTodo(req,res){
+    Todo.deleteTodoFromData(req.params.id)
+    res.redirect('/todos');
   }
 
   

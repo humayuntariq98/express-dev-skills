@@ -5,19 +5,19 @@ var todosController = require('../controllers/todos')
 
  // All actual paths start with "/todos"
  //path 1: for main page of todos which 
- router.get('/', todosController.index)
+ router.get('/', todosController.index);
 
 //Path 3: new todo route
-router.get('/new', todosController.new)
+router.get('/new', todosController.new);
 
  //path 2: for showing individual todos once they are clicked
  router.get('/:id', todosController.show);
 
  //path 4: for creating the todo added through new functionality(path in step 3)
- router.post('/', todosController.create)
+ router.post('/', todosController.create);
 
- //path 5: deleting a todo
- //POST req
+ //path 5: deleting a todo. since method has been changed to delete by method override, use router.delete
+ router.delete('/:id', todosController.delete)
 
 
 module.exports = router;

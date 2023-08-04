@@ -10,7 +10,8 @@ const todos = [
   module.exports = {
     getAll,
     getOne,
-    create
+    create,
+    deleteTodoFromData
   };
   
   function getAll() {
@@ -46,4 +47,10 @@ const todos = [
     createdTodo.done = false;
     todos.push(createdTodo)
 
+  }
+
+  function deleteTodoFromData(id){
+    id = parseInt(id)
+    const idx = todos.findIndex((t)=> t.id === id)
+    todos.splice(idx,1)
   }
